@@ -3,8 +3,12 @@ package br.edu.ifrs.petbemestar.dominio;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dono {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+@Entity
+public class Dono {
+	@Id
     private Long id;
     private String nome;
     private String telefone;
