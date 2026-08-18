@@ -2,9 +2,14 @@ package br.edu.ifrs.petbemestar.dominio;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Agendamento {
 
-    private Long id;
+	@Id
+	private Long id;
     private LocalDateTime dataHora;
     private TipoServico tipoServico;
     private SituacaoAgendamento situacao;
