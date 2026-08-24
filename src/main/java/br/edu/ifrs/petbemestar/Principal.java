@@ -6,6 +6,7 @@ public class Principal {
 		// TODO Auto-generated method stub
 		
 		 System.out.println("Pet Bem-Estar");
+		 System.out.println("Teste de sincronização de repositório Git Windows para Linux");
 
 	}
 
