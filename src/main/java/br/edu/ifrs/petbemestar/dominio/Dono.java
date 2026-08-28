@@ -4,55 +4,62 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Dono {
+
 	@Id
-    private Long id;
-    private String nome;
-    private String telefone;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private List<Animal> animais = new ArrayList<>();
+	private String nome;
+	private String telefone;
 
-    public Dono() {
-    }
+	@OneToMany(mappedBy = "dono")
+	private List<Animal> animais = new ArrayList<>();
 
-    public Dono(String nome, String telefone) {
-        this.nome = nome;
-        this.telefone = telefone;
-    }
+	public Dono() {
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public Dono(String nome, String telefone) {
+		this.nome = nome;
+		this.telefone = telefone;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public String getTelefone() {
-        return telefone;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
+	public String getTelefone() {
+		return telefone;
+	}
 
-    public List<Animal> getAnimais() {
-        return animais;
-    }
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 
-    public void adicionarAnimal(Animal animal) {
-        animais.add(animal);
-        animal.setDono(this);
-    }
+	public List<Animal> getAnimais() {
+		return animais;
+	}
+
+	public void adicionarAnimal(Animal animal) {
+		animais.add(animal);
+		animal.setDono(this);
+	}
 }

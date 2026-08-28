@@ -3,65 +3,73 @@ package br.edu.ifrs.petbemestar.dominio;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Agendamento {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-    private LocalDateTime dataHora;
-    private TipoServico tipoServico;
-    private SituacaoAgendamento situacao;
 
-    private Animal animal;
+	private LocalDateTime dataHora;
 
-    public Agendamento() {
-    }
+	private TipoServico tipoServico;
 
-    public Agendamento(LocalDateTime dataHora, TipoServico tipoServico) {
-        this.dataHora = dataHora;
-        this.tipoServico = tipoServico;
-        this.situacao = SituacaoAgendamento.MARCADO;
-    }
+	private SituacaoAgendamento situacao;
 
-    public Long getId() {
-        return id;
-    }
+	@ManyToOne
+	private Animal animal;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Agendamento() {
+	}
 
-    public LocalDateTime getDataHora() {
-        return dataHora;
-    }
+	public Agendamento(LocalDateTime dataHora, TipoServico tipoServico) {
+		this.dataHora = dataHora;
+		this.tipoServico = tipoServico;
+		this.situacao = SituacaoAgendamento.MARCADO;
+	}
 
-    public void setDataHora(LocalDateTime dataHora) {
-        this.dataHora = dataHora;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public TipoServico getTipoServico() {
-        return tipoServico;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setTipoServico(TipoServico tipoServico) {
-        this.tipoServico = tipoServico;
-    }
+	public LocalDateTime getDataHora() {
+		return dataHora;
+	}
 
-    public SituacaoAgendamento getSituacao() {
-        return situacao;
-    }
+	public void setDataHora(LocalDateTime dataHora) {
+		this.dataHora = dataHora;
+	}
 
-    public void setSituacao(SituacaoAgendamento situacao) {
-        this.situacao = situacao;
-    }
+	public TipoServico getTipoServico() {
+		return tipoServico;
+	}
 
-    public Animal getAnimal() {
-        return animal;
-    }
+	public void setTipoServico(TipoServico tipoServico) {
+		this.tipoServico = tipoServico;
+	}
 
-    public void setAnimal(Animal animal) {
-        this.animal = animal;
-    }
+	public SituacaoAgendamento getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(SituacaoAgendamento situacao) {
+		this.situacao = situacao;
+	}
+
+	public Animal getAnimal() {
+		return animal;
+	}
+
+	public void setAnimal(Animal animal) {
+		this.animal = animal;
+	}
 }

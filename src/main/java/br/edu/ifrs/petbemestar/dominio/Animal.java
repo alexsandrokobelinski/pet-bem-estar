@@ -4,54 +4,64 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Animal {
-	@Id
-	private Long id;
-	private String nome;
-	private Dono dono;
 
-	private List<Agendamento> agendamentos = new ArrayList<>();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	public Animal() {
-	}
+    private String nome;
 
-	public Animal(String nome) {
-		this.nome = nome;
-	}
+    @ManyToOne
+    private Dono dono;
 
-	public Long getId() {
-		return id;
-	}
+    @OneToMany(mappedBy = "animal")
+    private List<Agendamento> agendamentos = new ArrayList<>();
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Animal() {
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public Animal(String nome) {
+        this.nome = nome;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Dono getDono() {
-		return dono;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setDono(Dono dono) {
-		this.dono = dono;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public List<Agendamento> getAgendamentos() {
-		return agendamentos;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public void adicionarAgendamento(Agendamento agendamento) {
-		agendamentos.add(agendamento);
-		agendamento.setAnimal(this);
-	}
+    public Dono getDono() {
+        return dono;
+    }
+
+    public void setDono(Dono dono) {
+        this.dono = dono;
+    }
+
+    public List<Agendamento> getAgendamentos() {
+        return agendamentos;
+    }
+
+    public void adicionarAgendamento(Agendamento agendamento) {
+        agendamentos.add(agendamento);
+        agendamento.setAnimal(this);
+    }
 }
